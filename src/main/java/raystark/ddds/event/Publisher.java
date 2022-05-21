@@ -3,6 +3,8 @@ package raystark.ddds.event;
 /**
  * イベント出版用のインターフェース。
  *
+ * <p>publishメソッドに渡されたイベントは動的に型検査され、適切なサブスクライバに引き渡されます。
+ *
  * @implSpec 実装クラスは自身へのSubscriberの登録方法を定義する必要があります。
  * @see Subscriber
  */
