@@ -8,8 +8,6 @@ import raystark.ddds.event.Subscriber;
  * イベントのクラスオブジェクトに対してSubscriberを対応させるPublisher。
  *
  * <p>Eventのクラスオブジェクト1種につき複数のSubscriberが登録することができます。
- *
- * <p>実装クラスは不変である必要があります。
  */
 public interface ClassBasePublisher extends Publisher {
 
