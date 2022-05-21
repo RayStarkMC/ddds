@@ -6,6 +6,7 @@ package raystark.ddds.event;
  * <p>publishメソッドに渡されたイベントは動的に型検査され、適切なサブスクライバに引き渡されます。
  *
  * <p>実装クラスは自身へのSubscriberの登録方法を定義する必要があります。
+ * スレッド安全性を適切にドキュメント化する必要があります。
  * @see Subscriber
  */
 public interface Publisher {
