@@ -30,6 +30,8 @@ package raystark.ddds.aggregate;
  * 集約に関連するユビキタス言語を洞察し、論理削除が妥当な場合はコマンドメソッドで集約の状態を更新してください。
  * 論理削除された集約はコマンドメソッドの呼び出しを許可するべきではありません。
  *
+ * <p>集約がコマンドメソッドを持つ場合、CommandTargetの実装を検討してください。
+ *
  * @param <ID> 識別子の型
  */
 public interface Aggregate<ID> extends Entity<ID> {
