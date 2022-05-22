@@ -4,7 +4,7 @@ package raystark.ddds.event;
 /**
  * イベントシステムのサブスクライバ。
  *
- * @implSpec 実装は状態を持つべきではありません。
+ * <p>実装は状態を持つべきではありません。
  * @param <E> 購読するイベントの型
  */
 public interface Subscriber<E extends Event> {
