@@ -46,14 +46,36 @@ public final class OptionEither<L, R> implements Value<R> {
     /**
      * Rightとして指定した値のOptionを保持したOptionEitherを生成します。
      *
-     * @param right 保持する値
+     * @param value 保持する値
      * @return valueを保持したOptionEither
      * @param <L> EitherのLeftの型
      * @param <R> 保持する値の型
      */
-    public static <L, R> OptionEither<L, R> pure(R right) {
-        requireNonNull(right);
-        return right(Option.some(right));
+    public static <L, R> OptionEither<L, R> pure(R value) {
+        requireNonNull(value);
+        return some(value);
+    }
+
+    /**
+     * OptionのEitherをラップしてOptionEitherを生成します。
+     *
+     * @param optionEither OptionのEither
+     * @return OptionEither
+     * @param <L> EitherのLeftの型
+     * @param <R> Optionの値の型
+     */
+    public static <L, R> OptionEither<L, R> wrap(Either<L, Option<R>> optionEither) {
+        requireNonNull(optionEither);
+        return new OptionEither<>(optionEither);
+    }
+
+    /**
+     * ラップされたOptionのEitherを返します。
+     *
+     * @return OptionのEither
+     */
+    public Either<L, Option<R>> unWrap() {
+        return delegate;
     }
 
     /**
@@ -83,25 +105,27 @@ public final class OptionEither<L, R> implements Value<R> {
     }
 
     /**
-     * OptionのEitherをラップしてOptionEitherを生成します。
+     * 値を保持したRightを生成します。
      *
-     * @param optionEither OptionのEither
-     * @return OptionEither
+     * @param some 保持する値
+     * @return someを保持したOptionEither
      * @param <L> EitherのLeftの型
-     * @param <R> Optionの値の型
+     * @param <R> 保持する値の型
      */
-    public static <L, R> OptionEither<L, R> wrap(Either<L, Option<R>> optionEither) {
-        requireNonNull(optionEither);
-        return new OptionEither<>(optionEither);
+    public static <L, R> OptionEither<L, R> some(R some) {
+        requireNonNull(some);
+        return right(Option.some(some));
     }
 
     /**
-     * ラップされたOptionのEitherを返します。
+     * 空のRightを生成します。
      *
-     * @return OptionのEither
+     * @return 空のRight
+     * @param <L> EitherのLeftの型
+     * @param <R> 保持する値の型
      */
-    public Either<L, Option<R>> unWrap() {
-        return delegate;
+    public static <L, R> OptionEither<L, R> none() {
+        return right(Option.none());
     }
 
     /**
