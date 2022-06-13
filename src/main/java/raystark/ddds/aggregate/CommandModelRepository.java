@@ -16,24 +16,25 @@
 
 package raystark.ddds.aggregate;
 
-import io.vavr.control.Option;
+import raystark.ddds.util.controll.OptionEither;
 
 /**
  * コマンドモデルに対するリポジトリを表すマーカーインターフェース。
  *
  * @param <A_ID> コマンドモデルの識別子の型
  * @param <A> コマンドモデルの型
+ * @param <E> 失敗情報の型
  */
-public interface CommandModelRepository<A_ID, A extends CommandModel<A_ID, ?, ?>> extends Repository<A_ID, A> {
+public interface CommandModelRepository<A_ID, A extends CommandModel<A_ID, ?, ?>, E> extends Repository<A_ID, A, E> {
 
     /**
-     * 指定したIDのコマンドモデルを取得します。
+     * 指定したIDのコマンドモデルを検索します。
      *
-     * <p>コマンドモデルが存在しない場合空のOptionを返します。返されるコマンドモデルのイベントキューは空です。
+     * <p>発見されたコマンドモデルのイベントキューは空に指定されます。その他の仕様はRepositoryに準拠します。
      *
      * @param id ID値
-     * @return コマンドモデルが見つかった場合そのコマンドモデル、無ければ空のOption
+     * @return 失敗情報、又は存在する場合指定したIDを持つコマンドモデル
      */
     @Override
-    Option<A> findByID(A_ID id);
+    OptionEither<E, A> findByID(A_ID id);
 }

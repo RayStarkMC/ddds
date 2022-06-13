@@ -15,7 +15,8 @@
  */
 package raystark.ddds.aggregate;
 
-import io.vavr.control.Option;
+import io.vavr.control.Either;
+import raystark.ddds.util.controll.OptionEither;
 
 /**
  * 戦術的設計の構成要素であるリポジトリの基底インターフェースです。
@@ -29,18 +30,20 @@ import io.vavr.control.Option;
  *
  * @param <A_ID> 集約の識別子の型
  * @param <A> 集約の型
+ * @param <E> 失敗情報の型
  */
-public interface Repository<A_ID, A extends Aggregate<A_ID>> {
+public interface Repository<A_ID, A extends Aggregate<A_ID>, E> {
 
     /**
-     * 指定したIDの集約を取得します。
+     * 指定したIDの集約を検索します。
      *
-     * <p>集約が存在しない場合空のOptionを返します。
+     * <p>メソッド呼び出しが失敗した場合は失敗情報を保持したLeftが返されます。
+     * そうでなく、指定したIDの集約が存在しない場合空のOptionを返します。
      *
      * @param id ID値
-     * @return 集約が見つかった場合その集約、無ければ空のOption
+     * @return 失敗情報、又は存在する場合指定したIDを持つ集約
      */
-    Option<A> findByID(A_ID id);
+    OptionEither<E, A> findByID(A_ID id);
 
     /**
      * 集約を永続化します。
@@ -51,10 +54,13 @@ public interface Repository<A_ID, A extends Aggregate<A_ID>> {
      * 指定した集約が論理削除されており、かつこのリポジトリに指定した集約が存在しない場合、何も行いません。
      * 指定した集約が論理削除されており、かつこのリポジトリに指定した集約が存在する場合、
      * 集約の物理削除を行うか、更新を永続化するかは実装が選択できます。
+     * メソッド呼び出しが失敗した場合は失敗情報を保持したLeftが返されます。
+     * そうでない場合、永続化する集約を保持したRightが返されます。
      *
      * <p>実装は物理削除がトランザクション整合性か結果整合性かどちらを持つかを明示する必要があります。
      *
      * @param aggregate 永続化する集約
+     * @return 失敗情報、又は永続化する集約
      */
-    void save(A aggregate);
+    Either<E, A> save(A aggregate);
 }
