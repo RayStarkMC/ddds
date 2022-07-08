@@ -16,7 +16,6 @@
 package raystark.ddds.aggregate;
 
 import io.vavr.control.Either;
-import raystark.ddds.util.controll.OptionEither;
 
 /**
  * 戦術的設計の構成要素であるリポジトリの基底インターフェースです。
@@ -43,7 +42,7 @@ public interface Repository<A_ID, A extends Aggregate<A_ID>, E> {
      * @param id ID値
      * @return 失敗情報、又は存在する場合指定したIDを持つ集約
      */
-    OptionEither<E, A> findByID(A_ID id);
+    Either<E, A> findByID(A_ID id);
 
     /**
      * 集約を永続化します。
