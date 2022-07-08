@@ -16,7 +16,7 @@
 
 package raystark.ddds.aggregate;
 
-import raystark.ddds.util.controll.OptionEither;
+import io.vavr.control.Either;
 
 /**
  * コマンドモデルに対するリポジトリを表すマーカーインターフェース。
@@ -36,5 +36,5 @@ public interface CommandModelRepository<A_ID, A extends CommandModel<A_ID, ?, ?>
      * @return 失敗情報、又は存在する場合指定したIDを持つコマンドモデル
      */
     @Override
-    OptionEither<E, A> findByID(A_ID id);
+    Either<E, A> findByID(A_ID id);
 }
