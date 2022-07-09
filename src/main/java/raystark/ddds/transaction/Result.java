@@ -16,7 +16,6 @@
 
 package raystark.ddds.transaction;
 
-import io.vavr.control.Either;
 import raystark.ddds.aggregate.Aggregate;
 
 import static java.util.Objects.requireNonNull;
