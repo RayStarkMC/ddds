@@ -53,5 +53,5 @@ dependencies {
 dddsは[Apache License 2.0]の元公開されています。
 
 [vavr]:https://www.vavr.io
-[Apache License 2.0]: https://www.apache.org/licenses/LICENSE-2.0
 [GitHubの個人アクセストークン]: https://docs.github.com/ja/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#authenticating-to-github-packages
+[Apache License 2.0]: https://www.apache.org/licenses/LICENSE-2.0
