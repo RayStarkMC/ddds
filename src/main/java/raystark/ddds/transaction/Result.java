@@ -34,11 +34,17 @@ public sealed interface Result<E, A extends Aggregate<?>> {
     /**
      * トランザクションが成功した事を表すデータ型です。
      *
-     * @param result トランザクションで操作された集約
+     * @param result コミットされる集約
      * @param <E> 失敗情報の型
-     * @param <A>トランザクションで操作された集約の型
+     * @param <A>コミットされる集約の型
      */
     record Commit<E, A extends Aggregate<?>>(A result) implements Result<E, A> {
+
+        /**
+         * 集約をコミットします。
+         *
+         * @param result コミットされる集約
+         */
         public Commit {
             requireNonNull(result);
         }
@@ -46,11 +52,18 @@ public sealed interface Result<E, A extends Aggregate<?>> {
 
     /**
      * トランザクションが失敗した事を表すデータ型です。
+     *
      * @param failReport 失敗情報
      * @param <E> 失敗情報の型
      * @param <A>トランザクションで操作された集約の型
      */
     record Rollback<E, A extends Aggregate<?>>(E failReport) implements Result<E, A> {
+
+        /**
+         * トランザクションをロールバックします。
+         *
+         * @param failReport 失敗情報
+         */
         public Rollback {
             requireNonNull(failReport);
         }
