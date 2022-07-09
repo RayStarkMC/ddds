@@ -23,4 +23,16 @@ package raystark.ddds.util.typemap;
  *
  * @param <T> TypeMapに登録する型
  */
-public final class TypeKey<T> {}
+public final class TypeKey<T> {
+    private TypeKey() {}
+
+    /**
+     * キーを生成します。
+     *
+     * @return キー
+     * @param <T> このキーと対応付けされる型
+     */
+    public static <T> TypeKey<T> generate() {
+        return new TypeKey<>();
+    }
+}
