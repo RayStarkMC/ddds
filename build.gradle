@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group 'raystark'
@@ -26,4 +27,28 @@ test {
 
 tasks.withType(JavaCompile) {
     options.compilerArgs += '--enable-preview'
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri 'https://maven.pkg.github.com/raystarkmc/ddds'
+            credentials {
+                username = project.findProperty 'github.username'
+                password = project.findProperty 'github.password'
+            }
+        }
+    }
+
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
