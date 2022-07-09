@@ -9,5 +9,4 @@ module raystark.ddds {
     exports raystark.ddds.event.classbase;
     exports raystark.ddds.util;
     exports raystark.ddds.util.typemap;
-    exports raystark.ddds.util.controll;
 }
