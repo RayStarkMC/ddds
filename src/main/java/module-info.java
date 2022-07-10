@@ -5,6 +5,7 @@ module raystark.ddds {
     requires io.vavr;
 
     exports raystark.ddds.domain;
+    exports raystark.ddds.domain.error;
     exports raystark.ddds.event;
     exports raystark.ddds.event.classbase;
     exports raystark.ddds.util;
