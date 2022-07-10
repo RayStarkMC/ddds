@@ -16,6 +16,7 @@
 package raystark.ddds.domain;
 
 import io.vavr.control.Either;
+import raystark.ddds.domain.error.DomainError;
 
 /**
  * 戦術的設計の構成要素であるリポジトリの基底インターフェースです。
@@ -29,9 +30,8 @@ import io.vavr.control.Either;
  *
  * @param <A_ID> 集約の識別子の型
  * @param <A> 集約の型
- * @param <E> 失敗情報の型
  */
-public interface Repository<A_ID, A extends Aggregate<A_ID>, E> {
+public interface Repository<A_ID, A extends Aggregate<A_ID>> {
 
     /**
      * 指定したIDの集約を検索します。
@@ -42,7 +42,7 @@ public interface Repository<A_ID, A extends Aggregate<A_ID>, E> {
      * @param id ID値
      * @return 失敗情報、又は存在する場合指定したIDを持つ集約
      */
-    Either<E, A> findByID(A_ID id);
+    Either<DomainError, A> findByID(A_ID id);
 
     /**
      * 集約を永続化します。
@@ -61,5 +61,5 @@ public interface Repository<A_ID, A extends Aggregate<A_ID>, E> {
      * @param aggregate 永続化する集約
      * @return 失敗情報、又は永続化する集約
      */
-    Either<E, A> save(A aggregate);
+    Either<DomainError, A> save(A aggregate);
 }
