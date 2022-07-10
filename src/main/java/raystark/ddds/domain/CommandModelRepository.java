@@ -17,7 +17,7 @@
 package raystark.ddds.domain;
 
 import io.vavr.control.Either;
-import raystark.ddds.domain.error.DomainError;
+import raystark.ddds.domain.error.DomainErrorDetected;
 
 /**
  * コマンドモデルに対するリポジトリを表すマーカーインターフェース。
@@ -36,5 +36,5 @@ public interface CommandModelRepository<A_ID, A extends CommandModel<A_ID, ?, ?>
      * @return 失敗情報、又は存在する場合指定したIDを持つコマンドモデル
      */
     @Override
-    Either<DomainError, A> findByID(A_ID id);
+    Either<DomainErrorDetected, A> findByID(A_ID id);
 }

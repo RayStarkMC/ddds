@@ -3,15 +3,15 @@ package raystark.ddds.domain.error;
 /**
  * ドメインレイヤーで何らかの処理が失敗した事を表す型です。
  *
- * <p>DomainErrorの実装者は次の様な形式のメソッドを提供するべきです。
+ * <p>DomainErrorDetectedの実装者は次の様な形式のメソッドを提供するべきです。
  *
  * <pre> {@code
- *     public static <T> Either<DomainError, T> withMessage(String message)
+ *     public static <T> Either<DomainErrorDetected, T> withMessage(String message)
  * }</pre>
  *
- * このメソッドは指定したメッセージを保持したDomainErrorを生成します。実装、及び利用例はNullDetectedを参照してください。
+ * このメソッドは指定したメッセージを保持したDomainErrorDetectedを生成します。実装、及び利用例はNullDetectedを参照してください。
  */
-public interface DomainError {
+public interface DomainErrorDetected {
 
     /**
      * この失敗のメッセージを返します。

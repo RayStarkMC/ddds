@@ -13,7 +13,7 @@ public class NullDetectedTest {
             var nullPassed = assertDoesNotThrow(() -> NullDetected.withMessage(null));
             assertNotNull(nullPassed);
             assertNotNull(nullPassed.fold(
-                DomainError::message,
+                DomainErrorDetected::message,
                 right -> fail()
             ));
         }
@@ -25,7 +25,7 @@ public class NullDetectedTest {
             );
             assertNotNull(notNullPassed);
             assertEquals("myVariable must not be null.", notNullPassed.fold(
-                DomainError::message,
+                DomainErrorDetected::message,
                 Object::toString
             ));
         }
