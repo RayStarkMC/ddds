@@ -16,7 +16,7 @@
 
 package raystark.ddds.transaction;
 
-import raystark.ddds.aggregate.Aggregate;
+import raystark.ddds.domain.Aggregate;
 
 import static java.util.Objects.requireNonNull;
 

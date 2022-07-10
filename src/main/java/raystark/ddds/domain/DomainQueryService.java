@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package raystark.ddds.aggregate;
+package raystark.ddds.domain;
 
 /**
  * ドメイン知識のクエリサービスに対する基底マーカーインターフェースです。

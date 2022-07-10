@@ -5,4 +5,4 @@
  * DDD本ではエンティティは一般可変であると紹介されていますが、エンティティが可変である必要性はありません。
  * dddsではエンティティを不変とする事で実装をシンプルに保ちます。
  */
-package raystark.ddds.aggregate;
+package raystark.ddds.domain;
