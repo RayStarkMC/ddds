@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package raystark.ddds.aggregate;
+package raystark.ddds.domain;
 
 /**
  * 戦術的設計の構成要素であるエンティティの基底インターフェースです。

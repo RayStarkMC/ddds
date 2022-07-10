@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package raystark.ddds.aggregate;
+package raystark.ddds.domain;
 
 import io.vavr.control.Either;
 
